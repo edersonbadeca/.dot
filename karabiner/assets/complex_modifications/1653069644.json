@@ -1,0 +1,1 @@
+{"title":"Map Left Option + y to tab","rules":[{"description":"Map Left Option  + y to tab","manipulators":[{"type":"basic","from":{"modifiers":{"mandatory":["left_alt"]},"key_code":"y"},"to":[{"repeat":true,"key_code":"tab"}]}]}]}
