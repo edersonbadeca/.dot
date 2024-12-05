@@ -4,6 +4,22 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Shift + Ctrl + 0 to Right Click",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "0",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "pointing_button": "button2" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Map Left Option + Spacebar to Backspace",
                         "manipulators": [
                             {
@@ -72,6 +88,7 @@
                     },
                     {
                         "description": "Mapear Caps Lock para Left Option + Shift",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -96,6 +113,7 @@
                     },
                     {
                         "description": "Mapear Right Option para Left Shift + Command",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -120,6 +138,7 @@
                     },
                     {
                         "description": "Mapear Right Option para Left Shift + Command",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -144,6 +163,7 @@
                     },
                     {
                         "description": "Change Left Control to Ctrl+Option+ArrowDown",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

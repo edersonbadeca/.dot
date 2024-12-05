@@ -12,15 +12,15 @@ Plug 'Xuyuanp/git-nerdtree'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'kshenoy/vim-signature' " Show marks in the status line
-" Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'chriskempson/base16-vim'
 " Plugin para Go
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'charlespascoe/vim-go-syntax'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'charlespascoe/vim-go-syntax'
 Plug 'olexsmir/gopher.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
@@ -45,6 +45,8 @@ Plug 'preservim/tagbar'
 Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
 Plug 'chriskempson/base16-vim'
+Plug 'preservim/tagbar'
+Plug 'easymotion/vim-easymotion'
 " Terraform stuff
 
 call plug#end()
@@ -142,7 +144,8 @@ nnoremap <leader>A :Commands<CR>
 nnoremap <leader>a :Telescope<CR>
 nnoremap <leader>p :History<CR>
 nnoremap <leader>e :Buffers<CR>
-nnoremap <leader>k :Telescope<CR>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 
 " Habilitar formatação automática com goimports ao salvar arquivos Go
 " let g:go_fmt_command = "goimports"
@@ -273,7 +276,8 @@ nnoremap <C-o> :Telescope keymaps<CR>
 
 
 " Tagbar setup
-nnoremap <silent> <leader>o :Buffers<CR>
+nnoremap <silent> <leader>o :TagbarToggle<CR>
+nnoremap <silent> <leader><leader> :Buffers<CR>
 let tagbar_left=0
 let tagbar_autoclose=1
 let tagbar_autofocus=1
@@ -389,6 +393,20 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-j>" : "\<PageUp>"
 set completeopt+=longest
 set guifont=0xProtoNerdFont-Regular:h9
 
+
+
+" Atalhos básicos para navegação rápida do easymotion
+nmap <leader>w <Plug>(easymotion-w)
+nmap <leader>l <Plug>(easymotion-lineforward)
+nmap <leader>j <Plug>(easymotion-linebackward)
+nmap <leader>f <Plug>(easymotion-overwin-f)
+
+" Mapeia Ctrl+g seguido de uma letra para ir para a marca correspondente
+function! GotoMark()
+  let l:char = nr2char(getchar())
+  execute "normal! `".l:char
+endfunction
+nnoremap <C-g> :call GotoMark()<CR>
 
 
 
