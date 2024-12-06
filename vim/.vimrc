@@ -48,6 +48,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'preservim/tagbar'
 Plug 'easymotion/vim-easymotion'
 " Terraform stuff
+Plug 'hashivim/vim-terraform'
+
 
 call plug#end()
 
@@ -400,6 +402,16 @@ nmap <leader>w <Plug>(easymotion-w)
 nmap <leader>l <Plug>(easymotion-lineforward)
 nmap <leader>j <Plug>(easymotion-linebackward)
 nmap <leader>f <Plug>(easymotion-overwin-f)
+
+
+" Redefine o destaque do EasyMotionShade para não alterar o texto
+highlight EasyMotionShade guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
+
+" Linka o EasyMotionShade ao grupo Normal
+highlight link EasyMotionShade Normal
+
+
+
 
 " Mapeia Ctrl+g seguido de uma letra para ir para a marca correspondente
 function! GotoMark()
