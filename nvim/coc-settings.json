@@ -1,0 +1,8 @@
+{
+  "gopls": {
+    "analyses": {
+      "duplicate": false
+    }
+  }
+}
+

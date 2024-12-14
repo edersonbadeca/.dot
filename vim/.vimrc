@@ -150,8 +150,32 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
 " Habilitar formatação automática com goimports ao salvar arquivos Go
-" let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "goimports"
 " autocmd BufWritePre *.go :GoFmt
+
+" mapas para o debug do go
+nmap <leader>di :GoDebugStart<CR>
+nmap <leader>dc :GoDebugContinue<CR>
+nmap <leader>dn :GoDebugNext<CR>
+nmap <leader>ds :GoDebugStep<CR>
+nmap <leader>db :GoDebugBreakpoint<CR>
+
+" configs do vim-go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+
+" Configuração do golangci-lint
+let g:go_metalinter_command = "golangci-lint run"
+
+
+let g:go_gopls_enabled = 1
+let g:go_template_use_pkg = 1
+let g:go_template_file = '~/.vim/templates/go_function_template.go'
 
 
 
@@ -419,6 +443,11 @@ function! GotoMark()
   execute "normal! `".l:char
 endfunction
 nnoremap <C-g> :call GotoMark()<CR>
+
+" Use a seta para baixo para completar o próximo item na lista de autocompletar
+inoremap <Down> <C-n>
+" Use a seta para cima para completar o item anterior na lista de autocompletar
+inoremap <Up> <C-p>
 
 
 
