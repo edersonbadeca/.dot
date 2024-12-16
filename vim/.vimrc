@@ -50,6 +50,7 @@ Plug 'easymotion/vim-easymotion'
 " Terraform stuff
 Plug 'hashivim/vim-terraform'
 
+Plug 'folke/which-key.nvim' " which key plugin
 
 call plug#end()
 

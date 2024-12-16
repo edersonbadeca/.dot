@@ -5,3 +5,12 @@ source ~/.vimrc
 ]])
 
 require'lspconfig'.terraformls.setup{}
+-- Carregar configurações gerais
+require('settings')
+
+-- Configurar plugins
+require('plugins')
+
+-- Configurações do LSP
+require('lsp')
+
