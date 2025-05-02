@@ -17,7 +17,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'chriskempson/base16-vim'
 " Plugin para Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'charlespascoe/vim-go-syntax'
@@ -44,19 +43,33 @@ Plug 'github/copilot.vim'
 Plug 'preservim/tagbar'
 Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
-Plug 'chriskempson/base16-vim'
 Plug 'preservim/tagbar'
 Plug 'easymotion/vim-easymotion'
 " Terraform stuff
 Plug 'hashivim/vim-terraform'
 
-Plug 'folke/which-key.nvim' " which key plugin
+Plug 'folke/which-key.nvim' " show vim commands
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+Plug 'yasuhiroki/github-actions-yaml.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'codeindulgence/vim-tig'
+Plug 'tpope/vim-dotenv'
+
+" Plugin base do GitHub Copilot (necessário pro chat)
+Plug 'zbirenbaum/copilot.lua'
+
+" Dependência necessária
+
+" Plugin do chat (branch canary)
+Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+
 
 call plug#end()
 
 filetype plugin indent on     " required!
 
-"set t_Co=256
+set t_Co=256
 
 set background=dark
 
@@ -123,6 +136,8 @@ let g:coc_global_extensions = ['coc-go']
 
 "Colors schemas
 colorscheme badwolf
+"colorscheme dracula
+
 
 "Javascript
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
@@ -148,6 +163,8 @@ nnoremap <leader>a :Telescope<CR>
 nnoremap <leader>p :History<CR>
 nnoremap <leader>e :Buffers<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>l :s/, /,\r/g<CR>
 
 
 " Habilitar formatação automática com goimports ao salvar arquivos Go
@@ -226,6 +243,7 @@ nnoremap <Leader>x :file<CR>
 nnoremap <Leader>t :let g:pymode_python='python'<CR>
 nnoremap <leader>is :<c-u>ImpSort!<cr>
 nnoremap <leader><space> :Telescope<CR>
+inoremap <C-n>:<Down>
 
 
 nnoremap <c-s> :w<CR>
@@ -250,7 +268,7 @@ nnoremap <c-!> :call Close()<CR>
 "nnoremap <F8> Odlv debug <ESC> :w <CR>
 
 " Copilot
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+"imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 "let g:copilot_no_tab_map = v:true
 
 
@@ -450,5 +468,16 @@ inoremap <Down> <C-n>
 " Use a seta para cima para completar o item anterior na lista de autocompletar
 inoremap <Up> <C-p>
 
+" let g:ycm_language_server = [
+"   \ {
+"   \   'name': 'terraform',
+"   \   'filetypes': [ 'terraform' ],
+"   \   'cmdline': [ '/usr/local/bin/terraform-ls' ],
+"   \   'project_root_files': [ '.terraform' ],
+"   \   'options': { 'initialization_options': {} },
+"   \ },
+" \ ]
 
+syntax on
 
+"lua require('telescope.builtin').find_files({ hidden = true })
