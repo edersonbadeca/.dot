@@ -76,6 +76,32 @@ function ToggleCopilotChat()
   -- Se não estiver aberto, abre
   vim.cmd("CopilotChat")
 end
+local actions_search = false
+
+function ToggleGithubActionsSearch()
+  actions_search = not actions_search
+  if actions_search then
+    require('telescope.builtin').find_files{
+      search_dirs = {'/Users/edersonbadeca/projects/gilead/gdna-common/.github/actions'},
+      prompt_title = 'Search GitHub Actions'
+    }
+  else
+    print("GitHub Actions search toggled off")
+  end
+end
+function ToggleDataBricksGithubActionsSearch()
+  actions_search = not actions_search
+  if actions_search then
+    require('telescope.builtin').find_files{
+      search_dirs = {'/Users/edersonbadeca/projects/gilead/gdna-common-databricks/.github/actions'},
+      prompt_title = 'Search GitHub Actions'
+    }
+  else
+    print("GitHub Actions search toggled off")
+  end
+end vim.keymap.set('n', '<leader>gs', ToggleDataBricksGithubActionsSearch, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ga', ToggleGithubActionsSearch, { noremap = true, silent = true })
+
 
 -- Mapeia para <leader>cc (ou troque como quiser)
 vim.keymap.set("n", "<leader>cc", ToggleCopilotChat, { desc = "Toggle Copilot Chat" })
@@ -85,4 +111,6 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Renomear com LSP
 vim.keymap.set("n", "<leader>f", function()
   vim.lsp.buf.format({ async = true })
 end, { desc = "Formatar com LSP" })
+
+vim.lsp.set_log_level("off")
 

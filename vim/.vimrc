@@ -64,6 +64,8 @@ Plug 'zbirenbaum/copilot.lua'
 " Plugin do chat (branch canary)
 Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 
+Plug 'mtdl9/vim-log-highlighting' " Plugin para destacar logs
+
 
 call plug#end()
 
@@ -135,7 +137,8 @@ let g:coc_global_extensions = ['coc-go']
 
 
 "Colors schemas
-colorscheme badwolf
+"colorscheme badwolf
+colorscheme base16-gruvbox-dark-hard
 "colorscheme dracula
 
 
@@ -478,6 +481,3 @@ inoremap <Up> <C-p>
 "   \ },
 " \ ]
 
-syntax on
-
-"lua require('telescope.builtin').find_files({ hidden = true })
